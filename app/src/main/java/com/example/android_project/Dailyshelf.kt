@@ -2,7 +2,7 @@ package com.example.android_project
 
 import java.io.Serializable
 
-class Dailyservice : Serializable {
+class Dailyshelf : Serializable {
     private val storage = HashMap<Int, Daily>()
 
     fun addDaily(daily: Daily) {
