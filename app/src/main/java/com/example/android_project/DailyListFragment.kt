@@ -42,7 +42,7 @@ class DailyListFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(books: List<Daily>) =
+        fun newInstance(daily: List<Daily>) =
             DailyListFragment().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_DAILY, ArrayList(daily))
