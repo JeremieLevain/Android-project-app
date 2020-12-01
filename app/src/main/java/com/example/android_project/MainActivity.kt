@@ -28,12 +28,9 @@ class MainActivity : AppCompatActivity() {
         dailyService = retrofit.create(dailyService::class.java)
 
         dailyService.getAllDaily().enqueue(object : Callback<ArrayList<Daily>> {
-            override fun onResponse(
-                call: Call<ArrayList<Daily>>,
-                response: Response<ArrayList<Daily>>
-            ) {
-                val allBooks = response.body()
-                allBooks?.forEach {
+            override fun onResponse(call: Call<ArrayList<Daily>>, response: Response<ArrayList<Daily>>) {
+                val allDaily = response.body()
+                allDaily?.forEach {
                     dailyshelf.addDaily(it)
                 }
                 displayList()
@@ -55,10 +52,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayList() {
-        val bookListFragment = DailyListFragment.newInstance(dailyshelf.getAllDaily())
+        val dailyListFragment = DailyListFragment.newInstance(dailyshelf.getAllDaily())
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.a_main_lyt_container, bookListFragment)
+            .replace(R.id.a_main_lyt_container, dailyListFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             .commit()
     }
