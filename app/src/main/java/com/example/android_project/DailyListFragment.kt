@@ -13,13 +13,12 @@ private const val ARG_DAILY = "ARG_DAILY"
 
 class DailyListFragment : Fragment() {
     private lateinit var daily: ArrayList<Daily>
+
     private lateinit var rcvDaily: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            daily = it.getSerializable(ARG_DAILY) as ArrayList<Daily>
-        }
+        daily = arguments!!.getSerializable(ARG_DAILY) as ArrayList<Daily>
     }
 
     override fun onCreateView(
@@ -37,16 +36,19 @@ class DailyListFragment : Fragment() {
         val dividerItemDecoration = DividerItemDecoration(context, linearLayoutManager.orientation)
         this.rcvDaily.addItemDecoration(dividerItemDecoration)
 
-        return rootView;
+        return rootView
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(daily: List<Daily>) =
-            DailyListFragment().apply {
-                arguments = Bundle().apply {
-                    putSerializable(ARG_DAILY, ArrayList(daily))
-                }
-            }
+        fun newInstance(daily: List<Daily>): DailyListFragment {
+            val bundle = Bundle()
+            bundle.putSerializable(ARG_DAILY, ArrayList(daily))
+
+            val dailyListFragment = DailyListFragment()
+            dailyListFragment.arguments = bundle
+
+            return dailyListFragment
+        }
     }
 }

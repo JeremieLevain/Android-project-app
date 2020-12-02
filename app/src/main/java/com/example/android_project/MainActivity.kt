@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
     private val TAG = MainActivity::class.simpleName
+
     private val dailyshelf = Dailyshelf()
     private lateinit var dailyService: DailyService;
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             .baseUrl("https://DailyUScoronavirus-App-JLN-RFD.cleverapps.io")
             .build()
 
-        dailyService = retrofit.create(dailyService::class.java)
+        dailyService = retrofit.create(DailyService::class.java)
 
         dailyService.getAllDaily().enqueue(object : Callback<ArrayList<Daily>> {
             override fun onResponse(call: Call<ArrayList<Daily>>, response: Response<ArrayList<Daily>>) {
@@ -55,8 +56,7 @@ class MainActivity : AppCompatActivity() {
         val dailyListFragment = DailyListFragment.newInstance(dailyshelf.getAllDaily())
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.a_main_lyt_container, dailyListFragment)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            .commit()
+                .replace(R.id.a_main_lyt_container, dailyListFragment)
+                .commit()
     }
 }

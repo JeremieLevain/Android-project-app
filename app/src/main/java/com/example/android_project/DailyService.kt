@@ -11,5 +11,5 @@ interface DailyService {
     fun getAllDaily(): Call<ArrayList<Daily>>
 
     @POST("dailyUS")
-    fun createBook(@Body() daily: Daily): Call<Daily>
+    fun createDaily(@Body() daily: Daily): Call<Daily>
 }
