@@ -3,6 +3,7 @@ package com.example.android_project
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import java.text.DecimalFormat
 
 class DailyAdapter(private val daily: ArrayList<Daily>) : RecyclerView.Adapter<DailyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyViewHolder {
@@ -11,9 +12,10 @@ class DailyAdapter(private val daily: ArrayList<Daily>) : RecyclerView.Adapter<D
     }
 
     override fun onBindViewHolder(holder: DailyViewHolder, position: Int) {
-        val (date, dayDeath, dayPositive) = this.daily[position]
+        // Display the data in reverse direction
+        val (date, dayDeath, dayPositive) = this.daily[itemCount - 1 - position]
 
-        holder.txvDate.text = date.toString()
+        holder.txvDate.text = convertDate(date)
         holder.txvDayDeath.text = dayDeath.toString()
         holder.txvDayPositive.text = dayPositive.toString()
     }
@@ -26,5 +28,15 @@ class DailyAdapter(private val daily: ArrayList<Daily>) : RecyclerView.Adapter<D
         daily.clear();
         daily.addAll(dailyToDisplay)
         notifyDataSetChanged();
+    }
+
+    private fun convertDate(date: Int): String {
+        val formater = DecimalFormat("00")
+
+        val year = date/10000
+        val month = (date-year*10000)/100
+        val day = date-year*10000-month*100
+
+        return formater.format(day)+'/'+formater.format(month)+'/'+year.toString()
     }
 }
