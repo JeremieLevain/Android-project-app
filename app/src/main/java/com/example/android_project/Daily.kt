@@ -1,6 +1,7 @@
 package com.example.android_project
 
 import java.io.Serializable
+import java.text.DecimalFormat
 
 data class Daily(
     val date: Int,

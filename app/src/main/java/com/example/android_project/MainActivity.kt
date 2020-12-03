@@ -62,7 +62,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToDetail(view: View) {
+        val daily = Daily(
+                20201103,
+                50,
+                10,
+                9,
+                23,
+                5,
+                4,
+                false)
+        val bundle = Bundle()
+
+        bundle.putSerializable("daily", daily)
         val intent = Intent(this, DetailDailyActivity::class.java)
+        intent.putExtras(bundle)
         startActivity(intent)
     }
 }

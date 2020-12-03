@@ -13,7 +13,13 @@ class DailyAdapter(private val daily: ArrayList<Daily>) : RecyclerView.Adapter<D
 
     override fun onBindViewHolder(holder: DailyViewHolder, position: Int) {
         // Display the data in reverse direction
-        val (date, dayDeath, dayPositive) = this.daily[itemCount - 1 - position]
+        val (   date,
+                total_death,
+                total_positive,
+                total_negativet,
+                dayDeath,
+                dayPositive
+        ) = this.daily[itemCount - 1 - position]
 
         holder.txvDate.text = convertDate(date)
         holder.txvDayDeath.text = dayDeath.toString()
@@ -30,7 +36,7 @@ class DailyAdapter(private val daily: ArrayList<Daily>) : RecyclerView.Adapter<D
         notifyDataSetChanged();
     }
 
-    private fun convertDate(date: Int): String {
+    fun convertDate(date: Int): String {
         val formater = DecimalFormat("00")
 
         val year = date/10000
