@@ -1,5 +1,6 @@
 package com.example.android_project
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -58,5 +59,10 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.a_main_lyt_container, dailyListFragment)
                 .commit()
+    }
+
+    fun goToDetail(view: View) {
+        val intent = Intent(this, DetailDailyActivity::class.java)
+        startActivity(intent)
     }
 }
