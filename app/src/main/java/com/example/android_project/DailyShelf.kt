@@ -32,7 +32,7 @@ class DailyShelf : Serializable {
      * @return  List
      */
     fun getAllDaily(): List<Daily> {
-        return ArrayList(this.storage.values).sortedBy { daily -> daily.date }
+        return ArrayList(this.storage.values).sortedByDescending { daily -> daily.date }
     }
 
     /**

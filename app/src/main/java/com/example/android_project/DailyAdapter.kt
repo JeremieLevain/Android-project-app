@@ -30,7 +30,7 @@ class DailyAdapter(private val daily: ArrayList<Daily>,
      */
     override fun onBindViewHolder(holder: DailyViewHolder, position: Int) {
         // Display the data in reverse direction
-        val daily = this.daily[itemCount - 1 - position]
+        val daily = this.daily[position]
 
         holder.txvDate.text = convertDate(daily.date)
         holder.txvDayDeath.text = daily.day_death.toString()
