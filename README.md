@@ -28,3 +28,4 @@ The app contains :
 
 Improvement proposals :
 	1. Work around DateTime format and use BarCharts (more relevant?)
+	2. Implement possibility to change a daily in favorite
