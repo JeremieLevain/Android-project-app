@@ -144,43 +144,8 @@ class GraphFragment : Fragment() {
      */
     private fun getDailyBetweenDate(date1: Int, date2: Int): List<Daily> {
         return ArrayList(this.data).filter { daily: Daily ->
-            isDailyBetweenDate(date1, date2, daily.date)
+            daily.date in date1..date2
         }.sortedByDescending { daily : Daily -> daily.date  }
-    }
-
-    /**
-     * Flag proving if a daily is in a range of dates
-     * @param   date1
-     * @param   date2
-     * @param   date
-     * @return  Boolean
-     */
-    private fun isDailyBetweenDate(date1: Int, date2 : Int, date : Int): Boolean {
-        val (day, month, year) = convertDate(date)
-        val (day1, month1, year1) = convertDate(date1)
-        val (day2, month2, year2) = convertDate(date2)
-
-        if (year in year1..year2) {
-            if (month in month1..month2) {
-                if (day in day1..day2) {
-                    return true
-                }
-            }
-        }
-        return false
-    }
-
-    /**
-     * Convert an int date in a list of string one
-     * @param   date
-     * @return  List<String>
-     */
-    private fun convertDate(date: Int): List<String> {
-        val day = date.toString().substring(6,8)
-        val month = date.toString().substring(4, 6)
-        val year = date.toString().substring(6, 8)
-
-        return listOf(day, month, year)
     }
 
     /**
