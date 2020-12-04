@@ -69,116 +69,10 @@ class GraphFragment : Fragment() {
         val currentDate = getCurrentDate()
         val previousMonthDate = getPreviousMonth()
 
-        if (buttonDEATH) {
-            if(buttonMa3D) {
-                // Display data of the current month
-                if (buttonM) {
-                    val tab1 = getDailyBetweenDate(previousMonthDate, currentDate)
-                    // Create points of the graph
-                    val tab2 = Array<DataPoint>(tab1.size-3, { i: Int -> DataPoint(i.toDouble(), (tab1.get(i).day_death + tab1.get(i+1).day_death + tab1.get(i+2).day_death)/3.toDouble()) })
-                    // Make the graph
-                    val series: LineGraphSeries<DataPoint> = LineGraphSeries(tab2)
-                    setAxis(graph, 1.0, 35.0, 1.0, 2800.0)
-                    // Display the graph
-                    graph.addSeries(series)
-                }
+        // Display data of the current month or 2020
+        drawGraph(graph, previousMonthDate, currentDate)
+        switch.isChecked = buttonMa3D
 
-                // Display data of 2020
-                if (buttonY) {
-                    val tab1 = getDailyBetweenDate(20200101, currentDate)
-                    // Create points of the graph
-                    val tab2 = Array<DataPoint>(tab1.size - 3, { i: Int -> DataPoint(i.toDouble(), (tab1.get(i).day_death + tab1.get(i+1).day_death + tab1.get(i+2).day_death)/3.toDouble())})
-                    // Make the graph
-                    val series: LineGraphSeries<DataPoint> = LineGraphSeries(tab2)
-                    setAxis(graph, 1.0, 350.0, 1.0, 2800.0)
-                    // Display the graph
-                    graph.addSeries(series)
-                }
-                switch.isChecked = true;
-            }
-            else {
-                // Display data of the current month
-                if (buttonM) {
-                    val tab1 = getDailyBetweenDate(previousMonthDate, currentDate)
-                    // Create points of the graph
-                    val tab2 = Array<DataPoint>(tab1.size, { i: Int -> DataPoint(i.toDouble(), tab1.get(i).day_death.toDouble()) })
-                    // Make the graph
-                    val series: LineGraphSeries<DataPoint> = LineGraphSeries(tab2)
-                    setAxis(graph, 1.0, 35.0, 1.0, 2800.0)
-                    // Display the graph
-                    graph.addSeries(series)
-                }
-
-                // Display data of 2020
-                if (buttonY) {
-                    val tab1 = getDailyBetweenDate(20200101, currentDate)
-                    // Create points of the graph
-                    val tab2 = Array<DataPoint>(tab1.size, { i: Int -> DataPoint(i.toDouble(), tab1.get(i).day_death.toDouble()) })
-                    // Make the graph
-                    val series: LineGraphSeries<DataPoint> = LineGraphSeries(tab2)
-                    setAxis(graph, 1.0, 350.0, 1.0, 2800.0)
-                    // Display the graph
-                    graph.addSeries(series)
-                }
-                switch.isChecked = false;
-            }
-            graph.title = "DEATH"
-        }
-        else {
-            if (buttonMa3D) {
-                // Display data of the current month
-                if (buttonM) {
-                    val tab1 = getDailyBetweenDate(previousMonthDate, currentDate)
-                    // Create points of the graph
-                    val tab2 = Array<DataPoint>(tab1.size-3, { i: Int -> DataPoint(i.toDouble(), (tab1.get(i).day_positive + tab1.get(i+1).day_positive + tab1.get(i+2).day_positive)/3.toDouble()) })
-                    // Make the graph
-                    val series: LineGraphSeries<DataPoint> = LineGraphSeries(tab2)
-                    setAxis(graph, 1.0, 35.0, 1.0, 250000.0)
-                    // Display the graph
-                    graph.addSeries(series)
-                }
-
-                // Display data of 2020
-                if (buttonY) {
-                    val tab1 = getDailyBetweenDate(20200101, currentDate)
-                    // Create points of the graph
-                    val tab2 = Array<DataPoint>(tab1.size-3, { i: Int -> DataPoint(i.toDouble(), (tab1.get(i).day_positive + tab1.get(i+1).day_positive + tab1.get(i+2).day_positive)/3.toDouble()) })
-                    // Make the graph
-                    val series: LineGraphSeries<DataPoint> = LineGraphSeries(tab2)
-                    setAxis(graph, 1.0, 350.0, 1.0, 250000.0)
-                    // Display the graph
-                    graph.addSeries(series)
-                }
-                switch.isChecked = true;
-            }
-            else {
-                // Display data of the current month
-                if (buttonM) {
-                    val tab1 = getDailyBetweenDate(previousMonthDate, currentDate)
-                    // Create points of the graph
-                    val tab2 = Array<DataPoint>(tab1.size, { i: Int -> DataPoint(i.toDouble(), tab1.get(i).day_positive.toDouble()) })
-                    // Make the graph
-                    val series: LineGraphSeries<DataPoint> = LineGraphSeries(tab2)
-                    setAxis(graph, 1.0, 35.0, 1.0, 250000.0)
-                    // Display the graph
-                    graph.addSeries(series)
-                }
-
-                // Display data of 2020
-                if (buttonY) {
-                    val tab1 = getDailyBetweenDate(20200101, currentDate)
-                    // Create points of the graph
-                    val tab2 = Array<DataPoint>(tab1.size, { i: Int -> DataPoint(i.toDouble(), tab1.get(i).day_positive.toDouble()) })
-                    // Make the graph
-                    val series: LineGraphSeries<DataPoint> = LineGraphSeries(tab2)
-                    setAxis(graph, 1.0, 350.0, 1.0, 250000.0)
-                    // Display the graph
-                    graph.addSeries(series)
-                }
-                switch.isChecked = false;
-            }
-            graph.title = "POSITIVE"
-        }
         return rootView
     }
 
@@ -207,20 +101,76 @@ class GraphFragment : Fragment() {
     private fun getDailyBetweenDate(date1: Int, date2: Int): List<Daily> {
         return ArrayList(this.data).filter { daily: Daily ->
             daily.date in date1..date2
-        }.sortedByDescending { daily : Daily -> daily.date  }
+        }.sortedByDescending { daily : Daily -> daily.date  }.reversed()
+    }
+
+    /**
+     * Calculate the average in three days or not
+     * @param   tab
+     * @param   i
+     */
+    private fun average(tab: List<Daily>, i: Int): Double {
+        var result: Double
+        // Return the average on three day of death or positive cases
+        if (buttonMa3D) {
+            result = (tab[i].day_death + tab[i + 1].day_death + tab[i + 2].day_death) / 3.toDouble()
+            if (buttonPOSITIVE)
+                result = (tab[i].day_positive + tab[i + 1].day_positive + tab[i + 2].day_positive) / 3.toDouble()
+            return result
+        }
+        // Return the number of death or positive cases each day
+        result = tab[i].day_death.toDouble()
+        if (buttonPOSITIVE)
+            result = tab[i].day_positive.toDouble()
+        return result
+    }
+
+    /**
+     * Draw the graph in function of the different parameters
+     * @param   graph
+     * @param   previousMonthDate
+     * @param   currentDate
+     */
+    private fun drawGraph(graph: GraphView, previousMonthDate: Int, currentDate: Int) {
+        // Init the x-axis list and xmax
+        var tab1 = getDailyBetweenDate(previousMonthDate, currentDate)
+        var xmax = 35.0
+        if (buttonY) {
+            tab1 = getDailyBetweenDate(20200101, currentDate)
+            xmax = 350.0
+        }
+        // Init the title of the graph and ymax
+        var ymax = 2800.0
+        graph.title = "DEATH"
+        if (buttonPOSITIVE) {
+            ymax = 250000.0
+            graph.title = "POSITIVE"
+        }
+        // Init the number of abscissa
+        var size = tab1.size
+        if (buttonMa3D)
+            size -= 3
+
+        // Create points of the graph
+        val tab2 = Array(size) { i: Int -> DataPoint(i.toDouble(), average(tab1, i)) }
+
+        // Make the graph
+        val series: LineGraphSeries<DataPoint> = LineGraphSeries(tab2)
+        setAxis(graph, xmax, ymax)
+
+        // Display the graph
+        graph.addSeries(series)
     }
 
     /**
      * Set the parameters of the graph
      * @param   graph
-     * @param   xmin
      * @param   xmax
-     * @param   ymin
      * @param   ymax
      */
-    private fun setAxis(graph: GraphView, xmin: Double, xmax: Double, ymin: Double, ymax: Double) {
-        graph.viewport.setMinX(xmin)
-        graph.viewport.setMinY(ymin)
+    private fun setAxis(graph: GraphView, xmax: Double, ymax: Double) {
+        graph.viewport.setMinX(1.0)
+        graph.viewport.setMinY(1.0)
         graph.viewport.setMaxX(xmax)
         graph.viewport.setMaxY(ymax)
         graph.viewport.isYAxisBoundsManual = true
