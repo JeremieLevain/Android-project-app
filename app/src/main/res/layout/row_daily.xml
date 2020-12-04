@@ -10,62 +10,41 @@
         android:id="@+id/r_daily_txv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginRight="95dp"
         android:text="2020-11-03"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/r_daily_txv_day_positive"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/r_daily_txv_day_death"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:text="1000"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewDayDeath"
-        app:layout_constraintTop_toBottomOf="@+id/r_daily_txv_date" />
-
-    <TextView
-        android:id="@+id/textViewDayDeath"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="Death:"
-        app:layout_constraintBottom_toBottomOf="@+id/r_daily_txv_day_death"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewDayPositive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="Cases:"
-        app:layout_constraintBottom_toBottomOf="@+id/r_daily_txv_day_death"
-        app:layout_constraintStart_toEndOf="@+id/r_daily_txv_day_death" />
+        app:layout_constraintBottom_toBottomOf="@+id/r_daily_txv_date"
+        app:layout_constraintEnd_toStartOf="@+id/r_daily_imv_favorite" />
 
     <TextView
         android:id="@+id/r_daily_txv_day_positive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:text="1000"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:text="10000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewDayPositive" />
+        app:layout_constraintBottom_toBottomOf="@+id/r_daily_txv_date"
+        app:layout_constraintEnd_toEndOf="@+id/r_daily_txv_day_death" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/r_daily_imv_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/r_daily_txv_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/btn_star" />

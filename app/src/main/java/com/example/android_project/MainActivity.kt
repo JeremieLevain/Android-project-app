@@ -18,7 +18,6 @@ import retrofit2.converter.gson.GsonConverterFactory
  * @property    dailyShelf
  * @property    dailyService
  * @property    buttonMa3D
- * @property    buttonW
  * @property    buttonM
  * @property    buttonY
  * @property    buttonDEATH
@@ -33,8 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     // Variables to display graphs
     private var buttonMa3D = false
-    private var buttonW = true
-    private var buttonM = false
+    private var buttonM = true
     private var buttonY = false
     private var buttonDEATH = true
     private var buttonPOSITIVE = false
@@ -116,7 +114,6 @@ class MainActivity : AppCompatActivity() {
         val graphFragment = GraphFragment.newInstance(
                 dailyShelf.getAllDaily(),
                 buttonMa3D,
-                buttonW,
                 buttonM,
                 buttonY,
                 buttonDEATH,
@@ -147,26 +144,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Method to see data of the current week
-     * @param   view
-     */
-    fun goToW(view: View) {
-        if (!buttonW) {
-            buttonW = true
-            buttonM = false
-            buttonY = false
-        }
-        goToGraph(view)
-    }
-
-    /**
      * Method to see data of the current month
      * @param   view
      */
     fun goToM(view: View) {
         if (!buttonM) {
             buttonM = true
-            buttonW = false
             buttonY = false
         }
         goToGraph(view)
@@ -179,7 +162,6 @@ class MainActivity : AppCompatActivity() {
     fun goToY(view: View) {
         if (!buttonY) {
             buttonY = true
-            buttonW = false
             buttonM = false
         }
         goToGraph(view)
@@ -190,8 +172,10 @@ class MainActivity : AppCompatActivity() {
      * @param   view
      */
     fun goToDEATH(view: View) {
-        buttonDEATH = !buttonDEATH
-        buttonPOSITIVE = !buttonPOSITIVE
+        if (!buttonDEATH) {
+            buttonDEATH = true
+            buttonPOSITIVE = false
+        }
         goToGraph(view)
     }
 
@@ -200,8 +184,10 @@ class MainActivity : AppCompatActivity() {
      * @param   view
      */
     fun goToPOSITIVE(view: View) {
-        buttonPOSITIVE = !buttonPOSITIVE
-        buttonDEATH = !buttonDEATH
+        if (!buttonPOSITIVE) {
+            buttonPOSITIVE = !buttonPOSITIVE
+            buttonDEATH = !buttonDEATH
+        }
         goToGraph(view)
     }
 }
