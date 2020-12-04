@@ -1,7 +1,7 @@
 package com.example.android_project
 
+import com.jjoe64.graphview.series.DataPoint
 import java.io.Serializable
-import java.text.DecimalFormat
 
 data class Daily(
     val date: Int,

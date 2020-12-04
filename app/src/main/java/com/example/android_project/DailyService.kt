@@ -8,9 +8,6 @@ interface DailyService {
     @GET("dailyUS")
     fun getAllDaily(): Call<ArrayList<Daily>>
 
-    @POST("dailyUS")
-    fun createDaily(@Body() daily: Daily): Call<Daily>
-
     @PUT("dailyUS/{date}")
     fun SelectFavorite(@Path("date") date: Int): Call<Void>
 }

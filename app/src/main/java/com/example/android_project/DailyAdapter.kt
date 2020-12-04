@@ -3,7 +3,6 @@ package com.example.android_project
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import java.text.DecimalFormat
 
 class DailyAdapter(private val daily: ArrayList<Daily>,
                    private val cellClickListener: CellClickListener) : RecyclerView.Adapter<DailyViewHolder>() {
@@ -29,19 +28,17 @@ class DailyAdapter(private val daily: ArrayList<Daily>,
         return this.daily.size
     }
 
+    private fun convertDate(date: Int): String {
+        val year = date.toString().substring(0,4)
+        val month = date.toString().substring(4,6)
+        val day = date.toString().substring(6,8)
+
+        return "$day/$month/$year"
+    }
+
     fun updateItem(dailyToDisplay: List<Daily>) {
         daily.clear();
         daily.addAll(dailyToDisplay)
         notifyDataSetChanged();
-    }
-
-    fun convertDate(date: Int): String {
-        val formater = DecimalFormat("00")
-
-        val year = date/10000
-        val month = (date-year*10000)/100
-        val day = date-year*10000-month*100
-
-        return formater.format(day)+'/'+formater.format(month)+'/'+year.toString()
     }
 }

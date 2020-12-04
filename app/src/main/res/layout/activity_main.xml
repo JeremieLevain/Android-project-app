@@ -8,14 +8,56 @@
     android:animateLayoutChanges="true"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/a_main_button_daily_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:onClick="goToDailyList"
+        android:text="@string/daily_list"
+        app:backgroundTint="#009688"
+        app:layout_constraintBottom_toBottomOf="@+id/a_main_button_graph"
+        app:layout_constraintEnd_toStartOf="@+id/a_main_button_graph"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/a_main_button_graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="goToGraph"
+        android:text="@string/graph"
+        app:backgroundTint="#009688"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/a_main_button_documentation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:onClick="goToDocumentation"
+        android:text="@string/info"
+        app:backgroundTint="#009688"
+        app:layout_constraintBottom_toBottomOf="@+id/a_main_button_graph"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/a_main_button_graph" />
+
     <RelativeLayout
         android:id="@+id/a_main_lyt_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </RelativeLayout>
+        app:layout_constraintTop_toBottomOf="@+id/a_main_button_graph" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
