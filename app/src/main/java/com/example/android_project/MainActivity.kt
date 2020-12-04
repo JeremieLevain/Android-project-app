@@ -61,16 +61,7 @@ class MainActivity : AppCompatActivity() {
                 .commit()
     }
 
-    fun goToDetail(view: View) {
-        val daily = Daily(
-                20201103,
-                50,
-                10,
-                9,
-                23,
-                5,
-                4,
-                false)
+    fun goToDetail(view: View, daily: Daily) {
         val bundle = Bundle()
 
         bundle.putSerializable("daily", daily)
