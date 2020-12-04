@@ -4,18 +4,27 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_detail_daily.*
-import java.text.DecimalFormat
 
+/**
+ * Class DetailDailyActivity
+ * Window of a daily's detail
+ */
 class DetailDailyActivity : AppCompatActivity() {
+    /**
+     * Creation of the window
+     * @param   savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_daily)
 
+        // Reception of the Daily object sent by MainActivity
         val bundle: Bundle? = this.intent.extras
         val daily: Daily
         if (bundle != null) {
             daily = bundle.getSerializable("daily") as Daily
 
+            // Set the different views of activity_detail_daily.xml resource
             this.r_detail_daily_txv_date.text = convertDate(daily.date)
             this.r_detail_daily_txv_total_death.text = daily.total_death.toString()
             this.r_detail_daily_txv_total_positive.text = daily.total_positive.toString()
@@ -26,17 +35,24 @@ class DetailDailyActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Return to the main window
+     * @param   view
+     */
     fun exit(view: View) {
         finish()
     }
 
-    fun convertDate(date: Int): String {
-        val formater = DecimalFormat("00")
+    /**
+     * Convert a date int in a string one
+     * @param   date
+     * @return  string  date in format "dd/mm/yyyy"
+     */
+    private fun convertDate(date: Int): String {
+        val year = date.toString().substring(0,4)
+        val month = date.toString().substring(4,6)
+        val day = date.toString().substring(6,8)
 
-        val year = date/10000
-        val month = (date-year*10000)/100
-        val day = date-year*10000-month*100
-
-        return formater.format(day)+'/'+formater.format(month)+'/'+year.toString()
+        return "$day/$month/$year"
     }
 }

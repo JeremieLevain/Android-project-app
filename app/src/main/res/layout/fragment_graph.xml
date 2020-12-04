@@ -21,98 +21,98 @@
 
             <com.jjoe64.graphview.GraphView
                 android:id="@+id/graph"
-                android:layout_width="330dp"
-                android:layout_height="300dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/f_graph_button_positive"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintHorizontal_bias="0.781"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.635" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Switch
                 android:id="@+id/f_graph_switch_MA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="goToMa3D"
                 android:text="MA(3d)"
-                android:onClick="goToMA_3D"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/f_graph_button_Y"
-                app:layout_constraintHorizontal_bias="0.423"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.207" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/f_graph_button_death"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
                 android:onClick="goToDEATH"
                 android:text="Death"
                 app:backgroundTint="#2196F3"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.312"
+                app:layout_constraintEnd_toEndOf="@+id/f_graph_switch_MA"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.074" />
+                app:layout_constraintTop_toTopOf="@+id/f_graph_button_positive" />
 
             <Button
                 android:id="@+id/f_graph_button_positive"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="10dp"
                 android:onClick="goToPOSITIVE"
                 android:text="Positive"
                 app:backgroundTint="#00BCD4"
-                app:layout_constraintBottom_toBottomOf="@+id/f_graph_button_death"
+                app:layout_constraintBottom_toTopOf="@+id/f_graph_button_M"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.659"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/f_graph_button_death"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toStartOf="@+id/f_graph_switch_MA" />
 
             <Button
                 android:id="@+id/f_graph_button_Y"
-                android:layout_width="32dp"
-                android:layout_height="41dp"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:onClick="goToY"
                 android:text="Y"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 app:backgroundTint="#009688"
                 app:layout_constraintBottom_toBottomOf="@+id/f_graph_button_M"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.767"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/f_graph_button_M"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toEndOf="@+id/f_graph_button_M" />
 
             <Button
                 android:id="@+id/f_graph_button_W"
-                android:layout_width="32dp"
-                android:layout_height="41dp"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:onClick="goToW"
                 android:text="W"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#FFFFFF"
                 android:textSize="12dp"
+                android:textStyle="bold"
                 app:backgroundTint="#009688"
-                app:layout_constraintBottom_toBottomOf="@+id/f_graph_switch_MA"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/f_graph_switch_MA" />
+                app:layout_constraintBottom_toBottomOf="@+id/f_graph_button_M"
+                app:layout_constraintEnd_toStartOf="@+id/f_graph_button_M" />
 
             <Button
                 android:id="@+id/f_graph_button_M"
-                android:layout_width="32dp"
-                android:layout_height="41dp"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:onClick="goToM"
                 android:text="M"
                 android:textSize="12dp"
                 app:backgroundTint="#009688"
-                app:layout_constraintBottom_toBottomOf="@+id/f_graph_button_W"
+                app:layout_constraintBottom_toTopOf="@+id/f_graph_switch_MA"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.633"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/f_graph_button_W" />
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
