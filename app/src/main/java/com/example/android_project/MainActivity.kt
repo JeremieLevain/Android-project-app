@@ -60,13 +60,4 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.a_main_lyt_container, dailyListFragment)
                 .commit()
     }
-
-    fun goToDetail(view: View, daily: Daily) {
-        val bundle = Bundle()
-
-        bundle.putSerializable("daily", daily)
-        val intent = Intent(this, DetailDailyActivity::class.java)
-        intent.putExtras(bundle)
-        startActivity(intent)
-    }
 }

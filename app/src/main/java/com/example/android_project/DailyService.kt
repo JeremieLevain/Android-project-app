@@ -1,9 +1,7 @@
 package com.example.android_project
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface DailyService {
 
@@ -12,4 +10,7 @@ interface DailyService {
 
     @POST("dailyUS")
     fun createDaily(@Body() daily: Daily): Call<Daily>
+
+    @PUT("dailyUS/{date}")
+    fun SelectFavorite(@Path("date") date: Int): Call<Void>
 }
