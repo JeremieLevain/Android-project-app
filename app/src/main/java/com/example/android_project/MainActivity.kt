@@ -1,11 +1,8 @@
 package com.example.android_project
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,7 +39,6 @@ class MainActivity : AppCompatActivity() {
                 displayErrorToast(t)
             }
         })
-
     }
 
     private fun displayErrorToast(t: Throwable) {
