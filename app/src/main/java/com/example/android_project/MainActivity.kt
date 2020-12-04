@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     // Variables to display graphs
     private var buttonMa3D = false
-    private var buttonW = false
+    private var buttonW = true
     private var buttonM = false
     private var buttonY = false
     private var buttonDEATH = true
@@ -151,9 +151,11 @@ class MainActivity : AppCompatActivity() {
      * @param   view
      */
     fun goToW(view: View) {
-        buttonW = !buttonW
-        buttonM = false
-        buttonY = false
+        if (!buttonW) {
+            buttonW = true
+            buttonM = false
+            buttonY = false
+        }
         goToGraph(view)
     }
 
@@ -162,9 +164,11 @@ class MainActivity : AppCompatActivity() {
      * @param   view
      */
     fun goToM(view: View) {
-        buttonM = !buttonM
-        buttonW = false
-        buttonY = false
+        if (!buttonM) {
+            buttonM = true
+            buttonW = false
+            buttonY = false
+        }
         goToGraph(view)
     }
 
@@ -173,9 +177,11 @@ class MainActivity : AppCompatActivity() {
      * @param   view
      */
     fun goToY(view: View) {
-        buttonY = !buttonY
-        buttonW = false
-        buttonM = false
+        if (!buttonY) {
+            buttonY = true
+            buttonW = false
+            buttonM = false
+        }
         goToGraph(view)
     }
 
