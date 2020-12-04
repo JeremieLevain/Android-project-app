@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailDailyActivity">
+
+    <TextView
+        android:id="@+id/r_detail_daily_txv_total_negative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="0"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_total_positive"
+        app:layout_constraintTop_toBottomOf="@+id/r_detail_daily_txv_total_positive" />
+
+    <TextView
+        android:id="@+id/r_detail_daily_txv_total_positive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="0"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_total_death"
+        app:layout_constraintTop_toBottomOf="@+id/r_detail_daily_txv_total_death" />
+
+    <TextView
+        android:id="@+id/r_detail_daily_txv_total_death"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="0"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_day_ventilator"
+        app:layout_constraintTop_toBottomOf="@+id/r_detail_daily_txv_day_ventilator" />
+
+    <TextView
+        android:id="@+id/r_detail_daily_txv_day_ventilator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="0"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_day_positive"
+        app:layout_constraintTop_toBottomOf="@+id/r_detail_daily_txv_day_positive" />
+
+    <TextView
+        android:id="@+id/textViewTotalDeath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total of death:"
+        app:layout_constraintBottom_toTopOf="@+id/r_detail_daily_txv_total_death"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_total_death" />
+
+    <TextView
+        android:id="@+id/r_detail_daily_txv_day_positive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="0"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_day_death"
+        app:layout_constraintTop_toBottomOf="@+id/r_detail_daily_txv_day_death" />
+
+    <TextView
+        android:id="@+id/textViewDayPositive2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nb of positive cases:"
+        app:layout_constraintBottom_toTopOf="@+id/r_detail_daily_txv_day_positive"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_day_positive" />
+
+    <TextView
+        android:id="@+id/r_detail_daily_txv_day_death"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="0"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDayDeath2"
+        app:layout_constraintTop_toBottomOf="@+id/r_detail_daily_txv_date" />
+
+    <TextView
+        android:id="@+id/textViewTotalNegative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total negative cases:"
+        app:layout_constraintBottom_toTopOf="@+id/r_detail_daily_txv_total_negative"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_total_negative" />
+
+    <TextView
+        android:id="@+id/textViewTotalPositive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total of positive cases:"
+        app:layout_constraintBottom_toTopOf="@+id/r_detail_daily_txv_total_positive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewDayDeath2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nb of death:"
+        app:layout_constraintBottom_toTopOf="@+id/r_detail_daily_txv_day_death"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_date" />
+
+    <TextView
+        android:id="@+id/textViewDayVentilator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currently on ventilator:"
+        app:layout_constraintBottom_toTopOf="@+id/r_detail_daily_txv_day_ventilator"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_day_ventilator" />
+
+    <TextView
+        android:id="@+id/detailTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="DETAIL"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/r_detail_daily_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:onClick="exit"
+        app:layout_constraintBottom_toBottomOf="@+id/detailTitleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/detailTitleTextView"
+        app:srcCompat="@drawable/abc_vector_test" />
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date:"
+        app:layout_constraintBottom_toTopOf="@+id/r_detail_daily_txv_date"
+        app:layout_constraintStart_toStartOf="@+id/r_detail_daily_txv_date" />
+
+    <TextView
+        android:id="@+id/r_detail_daily_txv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="11/10/2020"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewTotalPositive"
+        app:layout_constraintTop_toBottomOf="@+id/detailTitleTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
